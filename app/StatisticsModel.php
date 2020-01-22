@@ -22,6 +22,6 @@ protected $fillable = [
 ];
 
 public function background() {
-    return $this->belongsTo('\app\BackgroundModel', 'background_id');
+    return $this->belongsToMany('\app\BackgroundModel', 'background_id');
 }
 }

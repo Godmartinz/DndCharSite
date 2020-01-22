@@ -14,7 +14,7 @@ class CreateCharacterTable extends Migration
     public function up()
     {
         Schema::create('characters', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('character_id');
             $table->integer('sort')->default(10);
             $table->timestamps();
         });

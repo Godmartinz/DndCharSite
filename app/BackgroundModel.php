@@ -17,9 +17,7 @@ class BackgroundModel extends Model
         'skills',
     ];
 
-    public function items(){
-        return $this->hasMany('\app\ItemModel', 'item_id');
-    }
+
     public function user(){
         return $this->belongsTo('\app\Users', 'user_id');
     }
