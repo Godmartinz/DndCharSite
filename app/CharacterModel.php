@@ -3,32 +3,62 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Watson\Validating\ValidatingTrait;
 
 class CharacterModel extends Model
 {
+    use ValidatingTrait;
+    protected $rules = [
+        'character_id'            => 'required',
+        'race'        => 'required',
+        'strength'       => 'integer|nullable',
+        'dexterity'      => 'integer|nullable',
+        'intelligence' => 'integer|nullable',
+        'wisdom'        => 'integer|nullable',
+        'charisma'   => 'integer|nullable',
+        'armor'    => 'integer|nullable',
+        'speed'     => 'numeric|nullable',
+        'savingThrows'       => 'nullable',
+        'hitPoints'          => 'integer|digits_between:0,255',
+        'profBonus'          => 'nullable',
+        'description'   => 'string|nullable',
+        'skillProficency'  => 'string|nullable',
+        'toolProficency'  => 'string|nullable',
+        'languages' => 'string|nullable',
+        'alignment' => 'string|nullable',
+        'skills' => 'string|nullable',
+    ];
     protected $fillable = [
         'character_id',
+        'race',
+        'strength',
+        'dexterity',
+        'intelligence',
+        'wisdom',
+        'charisma',
+        'armor',
+        'speed',
+        'savingThrows',
+        'hitPoints',
+        'profBonus',
+        'description',
+        'skillProficency',
+        'toolProficency',
+        'languages',
+        'alignment',
+        'skills',
 
     ];
 
-    public function background()
-    {
-        return $this->hasOne('\app\BackgroundModel', 'background_id');
-    }
-    public function race()
-    {
-        return $this->hasOne('\app\Race', 'race_id');
-    }
+
+
     public function user()
     {
-        return $this->belongsTo('\app\User', 'user_id');
+        return $this->belongsTo('\App\User', 'user_id');
     }
     public function items()
     {
-        return $this->hasMany('\app\ItemModel', 'item_id');
+        return $this->hasMany('\App\ItemModel', 'item_id');
     }
-    public function statistics()
-    {
-        return $this->hasOne('\app\StatisticsModel', "statistics_id");
-    }
+
 }

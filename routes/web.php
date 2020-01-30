@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('characters/{$character_id}', 'CharacterController@showCharacter')->name('characters');
